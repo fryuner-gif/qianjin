@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>千金 · 一岁生日邀请函 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Zhi+Mang+Xing&family=ZCOOL+KuaiLe&family=Pacifico&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --cream: #F0F8FF;
+    --blush: #DBF0FF;
+    --rose: #C2E4FF;
+    --peach: #E8F6FF;
+    --lavender: #D0EBFF;
+    --lilac: #B0D8F8;
+    --mint: #D8F0F8;
+    --sky: #EAF6FF;
+    --gold: #A8D8F0;
+    --warm-white: #F5FBFF;
+    --text-dark: #1E3A5C;
+    --text-mid: #4A6A8A;
+    --text-soft: #85A8C8;
+    --accent: #4A90D4;
+    --accent2: #2E6FA8;
+  }
+ 
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+ 
+  body {
+    font-family: 'ZCOOL KuaiLe', 'Ma Shan Zheng', sans-serif;
+    background: var(--cream);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    user-select: none;
+  }
+ 
+  /* ===== PAGES ===== */
+  .page {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(30px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  .page.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+  .page.exit-up {
+    opacity: 0;
+    transform: translateY(-40px);
+    pointer-events: none;
+  }
+ 
+  /* ===== PAGE 1 ===== */
+  #page1 {
+    background: linear-gradient(175deg, #EAF7FF 0%, #D4EDFF 25%, #C2E2FF 55%, #D8EEFF 80%, #EBF6FF 100%);
+    position: relative;
+  }
+ 
+  .confetti-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+  }
+ 
+  .confetti {
+    position: absolute;
+    top: -20px;
+    border-radius: 2px;
+    animation: confettiFall linear forwards;
+  }
+ 
+  @keyframes confettiFall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0.3; }
+  }
+ 
+  .balloon {
+    position: absolute;
+    font-size: 2.5rem;
+    animation: balloonRise ease-out forwards;
+    bottom: -60px;
+    pointer-events: none;
+  }
+ 
+  @keyframes balloonRise {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-110vh) rotate(15deg); opacity: 0.5; }
+  }
+ 
+  .stars-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+ 
+  .sparkle {
+    position: absolute;
+    font-size: 1.2rem;
+    animation: twinkle 2s ease-in-out infinite;
+  }
+ 
+  @keyframes twinkle {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+    50% { transform: scale(1.4) rotate(20deg); opacity: 1; }
+  }
+ 
+  .p1-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    z-index: 5;
+    padding: 40px 20px;
+    text-align: center;
+  }
+ 
+  .p1-badge {
+    background: linear-gradient(135deg, #D8EEFF, #C8E4FF);
+    border: 2px solid rgba(120,190,240,0.4);
+    border-radius: 50px;
+    padding: 8px 22px;
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    letter-spacing: 2px;
+    animation: fadeInDown 0.8s ease forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+    box-shadow: 0 4px 15px rgba(100,180,240,0.2);
+  }
+ 
+  .p1-title {
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 2.2rem;
+    line-height: 1.3;
+    color: var(--text-dark);
+    animation: fadeInDown 0.8s ease forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
+    text-shadow: 0 2px 10px rgba(180,120,200,0.2);
+  }
+ 
+  .p1-title span {
+    background: linear-gradient(135deg, #2E86C1, #5DADE2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+ 
+  .photo-frame {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-delay: 1.2s;
+    opacity: 0;
+    transform: scale(0.3);
+  }
+ 
+  @keyframes popIn {
+    0% { opacity: 0; transform: scale(0.3) rotate(-10deg); }
+    70% { transform: scale(1.1) rotate(2deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+ 
+  .photo-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #C8E8FF, #A8D4F8);
+    border: 5px solid white;
+    box-shadow: 0 10px 40px rgba(80,160,230,0.25), 0 0 0 8px rgba(200,235,255,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    overflow: hidden;
+    position: relative;
+  }
+ 
+  .photo-ring {
+    position: absolute;
+    inset: -14px;
+    border-radius: 50%;
+    border: 3px dashed rgba(100,180,240,0.45);
+    animation: spin 12s linear infinite;
+  }
+ 
+  @keyframes spin { 100% { transform: rotate(360deg); } }
+ 
+  .photo-decoration {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: float 3s ease-in-out infinite;
+  }
+ 
+  .photo-decoration:nth-child(1) { top: -10px; right: -5px; animation-delay: 0s; }
+  .photo-decoration:nth-child(2) { bottom: 0px; left: -10px; animation-delay: 0.5s; }
+  .photo-decoration:nth-child(3) { top: 50%; right: -18px; animation-delay: 1s; }
+ 
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(10deg); }
+  }
+ 
+  .p1-subtitle {
+    font-size: 1rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    max-width: 280px;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 1.8s;
+    opacity: 0;
+  }
+ 
+  .paw-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 2.2s;
+    opacity: 0;
+    margin-top: 8px;
+  }
+ 
+  .paw-btn-inner {
+    background: linear-gradient(135deg, #5DADE2, #2E86C1);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 36px;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(46,134,193,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+ 
+  .paw-btn-inner:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 30px rgba(46,134,193,0.45); }
+  .paw-btn-inner:active { transform: scale(0.96); }
+ 
+  .paw-hint {
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    letter-spacing: 1px;
+  }
+ 
+  /* ===== PAGE 2 ===== */
+  #page2 {
+    background: linear-gradient(160deg, #F0FAFF 0%, #DDF0FF 35%, #C8E6FF 65%, #D8F0FF 100%);
+    padding: 30px 20px 80px;
+    justify-content: flex-start;
+    padding-top: 50px;
+  }
+ 
+  .p2-header {
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+ 
+  .p2-crown {
+    font-size: 2.5rem;
+    animation: float 3s ease-in-out infinite;
+    display: block;
+    margin-bottom: 8px;
+  }
+ 
+  .p2-title {
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, #1A6FA8, #5DADE2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+ 
+  .p2-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin: 10px 0;
+    color: var(--text-soft);
+    font-size: 1.2rem;
+  }
+ 
+  .p2-divider::before, .p2-divider::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200,150,220,0.4), transparent);
+  }
+ 
+  .p2-card {
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(10px);
+    border-radius: 28px;
+    padding: 24px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 10px 40px rgba(60,140,210,0.14), 0 2px 8px rgba(100,170,230,0.1);
+    border: 1.5px solid rgba(140,200,245,0.45);
+    position: relative;
+    overflow: hidden;
+  }
+ 
+  .p2-card::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(160,215,255,0.35), transparent);
+    border-radius: 50%;
+  }
+ 
+  .p2-intro-emoji {
+    font-size: 3rem;
+    text-align: center;
+    display: block;
+    margin-bottom: 12px;
+  }
+ 
+  .p2-name {
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 10px;
+  }
+ 
+  .p2-name span {
+    background: linear-gradient(135deg, #1A6FA8, #5DADE2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.8rem;
+  }
+ 
+  .p2-text {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 2;
+    text-align: center;
+  }
+ 
+  .p2-traits {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 14px 0;
+  }
+ 
+  .trait-tag {
+    background: linear-gradient(135deg, rgba(200,232,255,0.6), rgba(180,220,255,0.5));
+    border: 1px solid rgba(120,190,240,0.4);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 0.8rem;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+ 
+  .trait-tag:hover, .trait-tag:active {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(70,150,220,0.25);
+    background: linear-gradient(135deg, rgba(160,215,255,0.75), rgba(140,200,255,0.7));
+  }
+ 
+  .p2-invite-card {
+    background: linear-gradient(135deg, rgba(210,238,255,0.55), rgba(190,228,255,0.45));
+    border-radius: 20px;
+    padding: 18px;
+    margin-top: 14px;
+    border: 1.5px solid rgba(140,200,245,0.4);
+  }
+ 
+  .p2-invite-title {
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 8px;
+  }
+ 
+  .p2-invite-text {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 2;
+    text-align: center;
+  }
+ 
+  .floating-deco {
+    position: absolute;
+    pointer-events: none;
+    font-size: 1.5rem;
+    animation: float 4s ease-in-out infinite;
+    opacity: 0.6;
+  }
+ 
+  /* ===== PAGE 3 ===== */
+  #page3 {
+    background: linear-gradient(155deg, #EBF7FF 0%, #D4ECFF 30%, #C0E2FF 60%, #D0EDFF 85%, #E5F5FF 100%);
+    padding: 30px 20px 100px;
+    justify-content: flex-start;
+    padding-top: 50px;
+  }
+ 
+  .p3-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+ 
+  .p3-title {
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    margin-top: 8px;
+  }
+ 
+  .p3-title span {
+    background: linear-gradient(135deg, #1A6FA8, #5DADE2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+ 
+  .info-card {
+    background: rgba(255,255,255,0.92);
+    border-radius: 24px;
+    padding: 22px;
+    width: 100%;
+    max-width: 340px;
+    box-shadow: 0 8px 30px rgba(100,170,220,0.12);
+    border: 1.5px solid rgba(180,220,250,0.45);
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+ 
+  .info-card:active { transform: scale(0.98); }
+ 
+  .info-card-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    font-size: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    pointer-events: none;
+    overflow: hidden;
+  }
+ 
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+ 
+  .info-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+ 
+  .info-icon.time-icon { background: linear-gradient(135deg, #C8E8FF, #A8D4F8); }
+  .info-icon.loc-icon { background: linear-gradient(135deg, #B8DEFF, #90C8F5); }
+ 
+  .info-card:active .info-icon { transform: scale(1.2) rotate(10deg); }
+ 
+  .info-content { flex: 1; }
+ 
+  .info-label {
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+  }
+ 
+  .info-value {
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+  }
+ 
+  .info-sub {
+    font-size: 0.82rem;
+    color: var(--text-mid);
+    margin-top: 2px;
+  }
+ 
+  .info-tooltip {
+    font-size: 0.8rem;
+    color: var(--accent2);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(100,170,220,0.4);
+    display: none;
+    animation: fadeInDown 0.3s ease;
+    text-align: center;
+  }
+ 
+  .info-tooltip.show { display: block; }
+ 
+  .location-input-wrapper {
+    background: rgba(255,255,255,0.92);
+    border-radius: 24px;
+    padding: 20px;
+    width: 100%;
+    max-width: 340px;
+    box-shadow: 0 8px 30px rgba(100,170,220,0.12);
+    border: 1.5px solid rgba(160,210,255,0.4);
+    margin-bottom: 16px;
+  }
+ 
+  .location-input-label {
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+ 
+  .loc-input {
+    width: 100%;
+    background: rgba(220,240,255,0.3);
+    border: 1.5px solid rgba(160,210,250,0.5);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.3s;
+  }
+ 
+  .loc-input:focus {
+    border-color: rgba(80,160,220,0.7);
+  }
+ 
+  .loc-input::placeholder {
+    color: var(--text-soft);
+    font-size: 0.85rem;
+  }
+ 
+  .map-placeholder {
+    border-radius: 16px;
+    overflow: hidden;
+    height: 120px;
+    background: linear-gradient(135deg, #E0F0FF, #F0E0FF);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--text-mid);
+    font-size: 0.85rem;
+    border: 1.5px dashed rgba(180,160,220,0.4);
+    margin-top: 10px;
+  }
+ 
+  /* ===== PAGE 4 ===== */
+  #page4 {
+    background: linear-gradient(150deg, #EEF8FF 0%, #D8EEFF 40%, #C5E3FF 70%, #D5EEFF 100%);
+    padding: 30px 20px 80px;
+    justify-content: flex-start;
+    padding-top: 50px;
+  }
+ 
+  .p4-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+ 
+  .p4-emoji { font-size: 2.5rem; display: block; margin-bottom: 8px; }
+ 
+  .p4-title {
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 1.8rem;
+    color: var(--text-dark);
+  }
+ 
+  .p4-title span {
+    background: linear-gradient(135deg, #1A6FA8, #5DADE2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+ 
+  .p4-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    margin-top: 6px;
+    line-height: 1.7;
+  }
+ 
+  .rsvp-card {
+    background: rgba(255,255,255,0.92);
+    border-radius: 28px;
+    padding: 28px 22px;
+    width: 100%;
+    max-width: 340px;
+    box-shadow: 0 10px 40px rgba(60,140,210,0.14);
+    border: 1.5px solid rgba(140,200,245,0.45);
+  }
+ 
+  .rsvp-question {
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 18px;
+  }
+ 
+  .rsvp-options {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+ 
+  .rsvp-btn {
+    flex: 1;
+    padding: 16px 12px;
+    border-radius: 18px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+    text-align: center;
+  }
+ 
+  .rsvp-btn.yes {
+    background: linear-gradient(135deg, rgba(255,245,180,0.5), rgba(255,230,100,0.4));
+    border-color: rgba(220,190,80,0.4);
+    color: var(--text-dark);
+  }
+ 
+  .rsvp-btn.no {
+    background: linear-gradient(135deg, rgba(200,230,255,0.5), rgba(180,220,255,0.4));
+    border-color: rgba(140,200,240,0.4);
+    color: var(--text-dark);
+  }
+ 
+  .rsvp-btn.selected-yes {
+    background: linear-gradient(135deg, #F5C518, #F5A623);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 6px 20px rgba(240,180,30,0.4);
+    transform: scale(1.03);
+  }
+ 
+  .rsvp-btn.selected-no {
+    background: linear-gradient(135deg, #5BA4CF, #3A7FBF);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 6px 20px rgba(80,150,210,0.35);
+    transform: scale(1.03);
+  }
+ 
+  .rsvp-btn:hover { transform: translateY(-2px) scale(1.02); }
+  .rsvp-btn.selected-yes:hover, .rsvp-btn.selected-no:hover { transform: scale(1.03); }
+ 
+  .name-input-group {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    animation: fadeInDown 0.4s ease;
+  }
+ 
+  .name-input-group.show { display: flex; }
+ 
+  .name-input-label {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    text-align: center;
+  }
+ 
+  .name-input {
+    width: 100%;
+    background: rgba(240,250,255,0.6);
+    border: 2px solid rgba(160,210,250,0.5);
+    border-radius: 14px;
+    padding: 13px 16px;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 1rem;
+    color: var(--text-dark);
+    outline: none;
+    text-align: center;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+ 
+  .name-input:focus {
+    border-color: rgba(80,160,220,0.7);
+    box-shadow: 0 0 0 4px rgba(160,210,250,0.15);
+  }
+ 
+  .name-input::placeholder { color: var(--text-soft); }
+ 
+  .submit-btn {
+    width: 100%;
+    padding: 15px;
+    border-radius: 18px;
+    border: none;
+    background: linear-gradient(135deg, #F5C518, #4AA8E8);
+    color: white;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(80,160,220,0.3);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+ 
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(80,160,220,0.4); }
+  .submit-btn:active { transform: scale(0.97); }
+ 
+  .no-message {
+    display: none;
+    text-align: center;
+    padding: 16px;
+    background: linear-gradient(135deg, rgba(210,240,255,0.55), rgba(210,255,240,0.55));
+    border-radius: 16px;
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    animation: fadeInDown 0.4s ease;
+  }
+ 
+  .no-message.show { display: block; }
+ 
+  .success-screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    animation: popIn 0.5s ease;
+  }
+ 
+  .success-screen.show { display: flex; }
+ 
+  .success-cat {
+    font-size: 4.5rem;
+    animation: float 3s ease-in-out infinite;
+  }
+ 
+  .success-title {
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, #D4880A, #2E86C1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+ 
+  .success-text {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.9;
+    max-width: 280px;
+  }
+ 
+  .success-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 4px;
+  }
+ 
+  .success-tag {
+    background: linear-gradient(135deg, rgba(255,245,170,0.55), rgba(200,230,255,0.55));
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    border: 1px solid rgba(160,210,250,0.35);
+  }
+ 
+  /* ===== NAV ===== */
+  .page-nav {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+ 
+  .page-nav.visible { opacity: 1; }
+ 
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(200,160,220,0.35);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+ 
+  .nav-dot.active {
+    background: linear-gradient(135deg, #F5C518, #4AA8E8);
+    width: 24px;
+    border-radius: 4px;
+  }
+ 
+  .next-btn {
+    position: fixed;
+    bottom: 22px;
+    right: 20px;
+    background: linear-gradient(135deg, #F5C518, #4AA8E8);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 11px 22px;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 0.92rem;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(80,160,220,0.3);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+    opacity: 0;
+  }
+ 
+  .next-btn.visible { opacity: 1; }
+  .next-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(80,160,220,0.4); }
+  .next-btn:active { transform: scale(0.96); }
+  .next-btn.hidden { display: none; }
+ 
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+ 
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+ 
+  /* ===== TOAST ===== */
+  .toast {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-80px);
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 12px 22px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    box-shadow: 0 6px 24px rgba(200,150,220,0.2);
+    border: 1px solid rgba(255,200,230,0.4);
+    z-index: 200;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    white-space: nowrap;
+  }
+ 
+  .toast.show { transform: translateX(-50%) translateY(0); }
+ 
+  /* ===== SCROLL HELPER ===== */
+  .scroll-hint {
+    position: fixed;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: var(--text-soft);
+    opacity: 0;
+    animation: fadeHint 3s ease 3s forwards;
+    z-index: 50;
+    pointer-events: none;
+  }
+ 
+  @keyframes fadeHint {
+    0% { opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; }
+  }
+ 
+  .p2-scroll, .p3-scroll, .p4-scroll { display: contents; }
+</style>
+</head>
+<body>
+ 
+<!-- CONFETTI + BALLOONS -->
+<div class="confetti-container" id="confettiContainer"></div>
+ 
+<!-- TOAST -->
+<div class="toast" id="toast">🐾</div>
+ 
+<!-- PAGE NAV DOTS -->
+<div class="page-nav" id="pageNav">
+  <div class="nav-dot active" onclick="goToPage(1)"></div>
+  <div class="nav-dot" onclick="goToPage(2)"></div>
+  <div class="nav-dot" onclick="goToPage(3)"></div>
+  <div class="nav-dot" onclick="goToPage(4)"></div>
+</div>
+ 
+<!-- NEXT BUTTON -->
+<button class="next-btn hidden" id="nextBtn" onclick="nextPage()">
+  继续 →
+</button>
+ 
+<!-- ============= PAGE 1 ============= -->
+<div class="page active" id="page1">
+  <div class="stars-bg" id="starsContainer"></div>
+ 
+  <div class="p1-content">
+    <div class="p1-badge">✨ 专属邀请函 · 2026 ✨</div>
+ 
+    <h1 class="p1-title">
+      今天<br/>有一位<span>小寿星</span><br/>闪亮登场 🎉
+    </h1>
+ 
+    <div class="photo-frame">
+      <div class="photo-ring"></div>
+      <div class="photo-inner">🐱</div>
+      <div class="photo-decoration">🎀</div>
+      <div class="photo-decoration">⭐</div>
+      <div class="photo-decoration">🌸</div>
+    </div>
+ 
+    <p class="p1-subtitle">
+      请查收来自布偶小男孩<br/>
+      <strong style="color:var(--text-dark)">千 金</strong> 的一岁生日邀请函 🎂<br/>
+      <span style="font-size:0.85rem;color:var(--text-soft)">轻轻点一下猫爪，开始吧～</span>
+    </p>
+ 
+    <div class="paw-btn" onclick="goToPage(2)">
+      <button class="paw-btn-inner">
+        🐾 点一下猫爪进入邀请函
+      </button>
+      <span class="paw-hint">↑ 点击继续</span>
+    </div>
+  </div>
+</div>
+ 
+<!-- ============= PAGE 2 ============= -->
+<div class="page" id="page2">
+  <div class="floating-deco" style="top:5%;left:5%;animation-delay:0s">🎀</div>
+  <div class="floating-deco" style="top:8%;right:8%;animation-delay:0.5s">⭐</div>
+  <div class="floating-deco" style="bottom:15%;left:8%;animation-delay:1s">🌸</div>
+  <div class="floating-deco" style="bottom:20%;right:6%;animation-delay:1.5s">🐟</div>
+ 
+  <div class="p2-header">
+    <span class="p2-crown">👑</span>
+    <h2 class="p2-title">认识一下我们的小寿星</h2>
+    <div class="p2-divider">🐾</div>
+  </div>
+ 
+  <div class="p2-card">
+    <span class="p2-intro-emoji">🐱</span>
+    <div class="p2-name">布偶小公猫 <span>千 金</span></div>
+ 
+    <p class="p2-text">
+      哈喽 ee 们～我是小千金 🐾<br/>
+      麻麻一掷千金把我带回家的小宝贝！<br/>
+      再过不久，<strong style="color:var(--text-dark)">我就要一岁啦！</strong> 🎂
+    </p>
+ 
+    <div class="p2-traits">
+      <span class="trait-tag" onclick="showToast('🐯 麻麻说我的花纹像小老虎，霸气吧！')">小老虎山猫纹</span>
+      <span class="trait-tag" onclick="showToast('🐿️ 我的尾巴又大又蓬，像松鼠一样！')">松鼠大尾巴</span>
+      <span class="trait-tag" onclick="showToast('💎 我的眼睛是蓝宝石色的，好看吧～')">蓝宝石眼睛</span>
+      <span class="trait-tag" onclick="showToast('🥺 蹭蹭麻麻就会咕噜咕噜～')">爱撒娇</span>
+      <span class="trait-tag" onclick="showToast('😴 睡觉是我的第一爱好，请勿打扰！')">嗜睡星人</span>
+      <span class="trait-tag" onclick="showToast('🏃 我在家跑酷，麻麻说我像一阵风！')">爱跑酷</span>
+      <span class="trait-tag" onclick="showToast('🌊 河景房是麻麻为我打下的！超美的～')">河景房业主</span>
+    </div>
+ 
+    <div class="p2-invite-card">
+      <div class="p2-invite-title">✉️ 我的邀请函，请查收</div>
+      <p class="p2-invite-text">
+        麻麻最爱我小老虎一样的山猫纹，<br/>
+        松鼠一样的大尾巴，<br/>
+        还有蓝宝石一样的漂亮眼睛 💎<br/>
+        <br/>
+        我爱撒娇、爱睡觉、爱跑酷，<br/>
+        也爱趴在窗台欣赏<br/>
+        麻麻为我打下的河景房 🌊<br/>
+        <br/>
+        我马上一岁啦，想请你来<br/>
+        陪我一起吹蜡烛！<br/>
+        🎂 期待见到你哦 ✨
+      </p>
+    </div>
+  </div>
+ 
+  <div style="height:16px"></div>
+</div>
+ 
+<!-- ============= PAGE 3 ============= -->
+<div class="page" id="page3">
+  <div class="floating-deco" style="top:4%;right:10%;animation-delay:0s;font-size:1.8rem">🎈</div>
+  <div class="floating-deco" style="top:10%;left:5%;animation-delay:0.8s;font-size:1.4rem">⏰</div>
+ 
+  <div class="p3-header">
+    <div style="font-size:2.2rem;margin-bottom:6px">📅</div>
+    <h2 class="p3-title">生日会 <span>详情</span></h2>
+    <p style="font-size:0.82rem;color:var(--text-soft);margin-top:4px">点击图标有小惊喜～</p>
+  </div>
+ 
+  <div class="info-card" onclick="toggleTooltip('timeTooltip', '⏰ 想到要见到大家就开心！千金会提前打扮好在门口等你～')">
+    <div class="info-card-bg">🎂</div>
+    <div class="info-row">
+      <div class="info-icon time-icon">⏰</div>
+      <div class="info-content">
+        <div class="info-label">生日会时间</div>
+        <div class="info-value">2026年7月4日</div>
+        <div class="info-sub">📌 具体时间待定，敬请关注</div>
+      </div>
+    </div>
+    <div class="info-tooltip" id="timeTooltip"></div>
+  </div>
+ 
+  <div class="info-card" onclick="toggleTooltip('locTooltip', '🗺️ 导航请搜索：39 Quai de Versailles, 44000 Nantes，记得准时哦！千金会在门口等你～')">
+    <div class="info-card-bg">🏡</div>
+    <div class="info-row">
+      <div class="info-icon loc-icon">📍</div>
+      <div class="info-content">
+        <div class="info-label">生日会地址</div>
+        <div class="info-value" id="displayAddress" style="font-size:1rem;word-break:break-all">39 Quai de Versailles</div>
+        <div class="info-sub">44000 Nantes, France 🇫🇷</div>
+      </div>
+    </div>
+    <div class="info-tooltip" id="locTooltip"></div>
+  </div>
+ 
+  <div class="location-input-wrapper">
+    <div class="map-placeholder">
+      <span style="font-size:2rem">🗺️</span>
+      <span style="font-weight:bold;color:var(--text-dark)">Quai de Versailles, Nantes</span>
+      <span style="font-size:0.78rem;opacity:0.75;text-align:center;padding:0 10px">点击地址卡片获取导航提示<br/>或复制地址到 Google Maps 🧭</span>
+    </div>
+  </div>
+ 
+  <div style="height: 10px"></div>
+</div>
+ 
+<!-- ============= PAGE 4 ============= -->
+<div class="page" id="page4">
+  <div class="floating-deco" style="top:4%;left:8%;animation-delay:0s">🎊</div>
+  <div class="floating-deco" style="top:6%;right:6%;animation-delay:0.7s">✨</div>
+ 
+  <div class="p4-header">
+    <span class="p4-emoji">🐾</span>
+    <h2 class="p4-title">你会来吗？<span>告诉千金</span></h2>
+    <p class="p4-subtitle">
+      千金已经准备好糖果和玩具在等啦<br/>快来告诉它你会不会来～
+    </p>
+  </div>
+ 
+  <div class="rsvp-card" id="rsvpCard">
+    <!-- Main question -->
+    <div id="rsvpMain">
+      <div class="rsvp-question">🎂 你会来参加千金的一岁生日会吗？</div>
+      <div class="rsvp-options">
+        <div class="rsvp-btn yes" id="yesBtn" onclick="selectRsvp('yes')">
+          🎉 我要来！
+        </div>
+        <div class="rsvp-btn no" id="noBtn" onclick="selectRsvp('no')">
+          😢 暂时无法参加
+        </div>
+      </div>
+ 
+      <!-- Yes flow -->
+      <div class="name-input-group" id="nameGroup">
+        <div class="name-input-label">🌸 太好啦！请告诉千金你的名字～</div>
+        <input class="name-input" id="nameInput" type="text" placeholder="输入你的名字或昵称" maxlength="20"/>
+        <button class="submit-btn" onclick="submitRsvp()">
+          🐾 确认参加！提交名字
+        </button>
+      </div>
+ 
+      <!-- No flow -->
+      <div class="no-message" id="noMessage">
+        <div style="font-size:2rem;margin-bottom:10px">🌙</div>
+        <div style="font-family:'ZCOOL KuaiLe',sans-serif;font-size:1.1rem;color:var(--text-dark);margin-bottom:8px">没关系的～</div>
+        千金说：没关系哒，下次再来陪我玩吧！<br/>
+        希望能收到你遥远的生日祝福 💌<br/>
+        记得给千金发一条比心～ 🐱✨
+      </div>
+    </div>
+ 
+    <!-- Success screen -->
+    <div class="success-screen" id="successScreen">
+      <div class="success-cat">🎂</div>
+      <div class="success-title">收到啦～千金超开心！</div>
+      <p class="success-text">
+        千金已经把 <strong id="confirmedName" style="color:#D4880A">你</strong> 的名字<br/>
+        写进我的VIP名单里了 📝<br/><br/>
+        期待和你一起庆祝，<br/>
+        一定要准时来哦～ 🎀
+      </p>
+      <div class="success-tags">
+        <span class="success-tag">🐾 期待见到你</span>
+        <span class="success-tag">🎉 一起庆祝</span>
+        <span class="success-tag">🎂 吹蜡烛</span>
+      </div>
+      <div style="margin-top:14px;font-size:2rem;animation:float 2s ease-in-out infinite;">😻</div>
+    </div>
+  </div>
+ 
+  <div style="height:20px"></div>
+</div>
+ 
+<script>
+  // ===== STATE =====
+  let currentPage = 1;
+  let rsvpChoice = null;
+ 
+  // ===== INIT =====
+  window.addEventListener('load', () => {
+    createStars();
+    launchCelebration();
+    updateNav();
+  });
+ 
+  // ===== STARS =====
+  function createStars() {
+    const container = document.getElementById('starsContainer');
+    const emojis = ['⭐','✨','🌟','💫','🌸','🎀','🍬'];
+    for (let i = 0; i < 18; i++) {
+      const star = document.createElement('div');
+      star.className = 'sparkle';
+      star.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDelay = (Math.random() * 3) + 's';
+      star.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+      star.style.opacity = 0.4 + Math.random() * 0.4;
+      star.style.fontSize = (0.8 + Math.random() * 0.8) + 'rem';
+      container.appendChild(star);
+    }
+  }
+ 
+  // ===== CELEBRATION =====
+  function launchCelebration() {
+    // Confetti
+    const colors = ['#FFB3BA','#FFDFBA','#FFFFBA','#BAFFC9','#BAE1FF','#E8BAFE','#FFC8DD'];
+    const container = document.getElementById('confettiContainer');
+    for (let i = 0; i < 55; i++) {
+      setTimeout(() => {
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        const size = 6 + Math.random() * 10;
+        c.style.cssText = `
+          left:${Math.random()*100}%;
+          width:${size}px; height:${size * 0.6}px;
+          background:${colors[Math.floor(Math.random()*colors.length)]};
+          animation-duration:${2 + Math.random()*3}s;
+          animation-delay:${Math.random()*1.5}s;
+          border-radius:${Math.random() > 0.5 ? '50%' : '2px'};
+        `;
+        container.appendChild(c);
+        setTimeout(() => c.remove(), 5500);
+      }, i * 40);
+    }
+ 
+    // Balloons
+    const balloons = ['🎈','🎉','🎊','🎁'];
+    for (let i = 0; i < 8; i++) {
+      setTimeout(() => {
+        const b = document.createElement('div');
+        b.className = 'balloon';
+        b.textContent = balloons[Math.floor(Math.random()*balloons.length)];
+        b.style.cssText = `
+          left:${5 + Math.random()*90}%;
+          animation-duration:${3 + Math.random()*2}s;
+          animation-delay:${Math.random()*1}s;
+          font-size:${1.8 + Math.random()*1.2}rem;
+        `;
+        container.appendChild(b);
+        setTimeout(() => b.remove(), 6000);
+      }, i * 200);
+    }
+  }
+ 
+  // ===== PAGE NAVIGATION =====
+  function goToPage(num) {
+    if (num < 1 || num > 4) return;
+    const cur = document.getElementById('page' + currentPage);
+    const next = document.getElementById('page' + num);
+ 
+    if (num === 4) {
+      document.getElementById('nextBtn').classList.add('hidden');
+    }
+ 
+    cur.classList.remove('active');
+    cur.classList.add('exit-up');
+    setTimeout(() => cur.classList.remove('exit-up'), 700);
+ 
+    next.classList.add('active');
+    currentPage = num;
+    updateNav();
+ 
+    // Scroll to top on page change
+    next.scrollTop = 0;
+  }
+ 
+  function nextPage() {
+    if (currentPage < 4) goToPage(currentPage + 1);
+  }
+ 
+  function updateNav() {
+    const dots = document.querySelectorAll('.nav-dot');
+    dots.forEach((d, i) => {
+      d.classList.toggle('active', i + 1 === currentPage);
+    });
+ 
+    const nav = document.getElementById('pageNav');
+    const nextBtn = document.getElementById('nextBtn');
+ 
+    nav.classList.toggle('visible', currentPage > 1);
+ 
+    if (currentPage > 1 && currentPage < 4) {
+      nextBtn.classList.add('visible');
+      nextBtn.classList.remove('hidden');
+    } else {
+      nextBtn.classList.remove('visible');
+      if (currentPage !== 1) nextBtn.classList.add('hidden');
+    }
+  }
+ 
+  // ===== TOOLTIP =====
+  function toggleTooltip(id, msg) {
+    const el = document.getElementById(id);
+    if (!el.classList.contains('show')) {
+      el.textContent = msg;
+      el.classList.add('show');
+      showToast('✨ ' + msg.substring(0, 20) + '...');
+    } else {
+      el.classList.remove('show');
+    }
+  }
+ 
+  // ===== TOAST =====
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
+  }
+ 
+  // ===== RSVP =====
+  function selectRsvp(choice) {
+    rsvpChoice = choice;
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const nameGroup = document.getElementById('nameGroup');
+    const noMessage = document.getElementById('noMessage');
+ 
+    yesBtn.className = 'rsvp-btn ' + (choice === 'yes' ? 'selected-yes' : 'yes');
+    noBtn.className = 'rsvp-btn ' + (choice === 'no' ? 'selected-no' : 'no');
+ 
+    if (choice === 'yes') {
+      nameGroup.classList.add('show');
+      noMessage.classList.remove('show');
+      showToast('🎉 太棒了！请告诉千金你的名字～');
+    } else {
+      noMessage.classList.add('show');
+      nameGroup.classList.remove('show');
+      launchCelebration();
+    }
+  }
+ 
+  function submitRsvp() {
+    const nameInput = document.getElementById('nameInput');
+    const name = nameInput.value.trim();
+    if (!name) {
+      showToast('🐾 请输入你的名字哦～');
+      nameInput.focus();
+      return;
+    }
+ 
+    document.getElementById('confirmedName').textContent = name;
+    document.getElementById('rsvpMain').style.display = 'none';
+    document.getElementById('successScreen').classList.add('show');
+ 
+    launchCelebration();
+    showToast('🎂 收到啦！千金已经把你写进VIP名单了～');
+ 
+    document.getElementById('nextBtn').classList.add('hidden');
+  }
+</script>
+</body>
+</html>
