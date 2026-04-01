@@ -7,23 +7,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Zhi+Mang+Xing&family=ZCOOL+KuaiLe&family=Pacifico&display=swap" rel="stylesheet"/>
 <style>
   :root {
-    /* 梦幻可爱配色方案 */
-    --cream: #FFF5F7;    /* 樱花白（底色） */
-    --blush: #FFE4E1;    /* 浅粉 */
-    --rose: #FFC0CB;     /* 玫瑰粉 */
-    --peach: #FFDAB9;    /* 蜜桃色 */
-    --lavender: #F3E5F5; /* 梦幻紫 */
-    --lilac: #E1BEE7;    /* 丁香紫 */
-    --mint: #E8F5E9;     /* 薄荷绿 */
-    --sky: #E3F2FD;      /* 浅蓝 */
-    --gold: #FFD700;     /* 金色 */
-    --warm-white: #FFF9FB;
-    --text-dark: #5D4037; /* 深褐色（比纯黑更柔和，像巧克力色） */
-    --text-mid: #8D6E63;
-    --text-soft: #BCAAA4;
-    --accent: #FF80AB;    /* 活力粉（主要强调色） */
-    --accent2: #CE93D8;   /* 梦幻紫（次要强调色） */
-}
+    --cream: #F0F8FF;
+    --blush: #DBF0FF;
+    --rose: #C2E4FF;
+    --peach: #E8F6FF;
+    --lavender: #D0EBFF;
+    --lilac: #B0D8F8;
+    --mint: #D8F0F8;
+    --sky: #EAF6FF;
+    --gold: #A8D8F0;
+    --warm-white: #F5FBFF;
+    --text-dark: #1E3A5C;
+    --text-mid: #4A6A8A;
+    --text-soft: #85A8C8;
+    --accent: #4A90D4;
+    --accent2: #2E6FA8;
+  }
  
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
  
@@ -45,17 +44,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* --- 以下是核心修改点 --- */
-    justify-content: flex-start; /* 改为从顶部开始排版，防止内容被切断 */
-    overflow-y: auto;            /* 开启垂直滚动条 */
-    padding: 60px 20px 100px;    /* 增加顶部和底部间距，防止内容贴边或被导航栏遮挡 */
-    -webkit-overflow-scrolling: touch; /* 让手机滑动更丝滑 */
-    /* --- 以上是核心修改点 --- */
+    justify-content: center;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.6s ease, transform 0.6s ease;
     transform: translateY(30px);
-}
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
   .page.active {
     opacity: 1;
     pointer-events: all;
@@ -1002,7 +999,7 @@
  
   <div class="p2-card">
     <span class="p2-intro-emoji">🐱</span>
-    <div class="p2-name">布偶小公猫 <span>千 金</span></div>
+    <div class="p2-name">布偶小男孩 <span>千 金</span></div>
  
     <p class="p2-text">
       哈喽 ee 们～我是小千金 🐾<br/>
@@ -1023,14 +1020,6 @@
     <div class="p2-invite-card">
       <div class="p2-invite-title">✉️ 我的邀请函，请查收</div>
       <p class="p2-invite-text">
-        麻麻最爱我小老虎一样的山猫纹，<br/>
-        松鼠一样的大尾巴，<br/>
-        还有蓝宝石一样的漂亮眼睛 💎<br/>
-        <br/>
-        我爱撒娇、爱睡觉、爱跑酷，<br/>
-        也爱趴在窗台欣赏<br/>
-        麻麻为我打下的河景房 🌊<br/>
-        <br/>
         我马上一岁啦，想请你来<br/>
         陪我一起吹蜡烛！<br/>
         🎂 期待见到你哦 ✨
@@ -1098,7 +1087,7 @@
     <span class="p4-emoji">🐾</span>
     <h2 class="p4-title">你会来吗？<span>告诉千金</span></h2>
     <p class="p4-subtitle">
-      千金已经准备好糖果和玩具在等啦<br/>快来告诉它你会不会来～
+      千金已经准备好糖果和玩具在等啦<br/>快来告诉我你会不会来～
     </p>
   </div>
  
@@ -1140,7 +1129,7 @@
       <div class="success-title">收到啦～千金超开心！</div>
       <p class="success-text">
         千金已经把 <strong id="confirmedName" style="color:#D4880A">你</strong> 的名字<br/>
-        写进我的VIP名单里了 📝<br/><br/>
+        写进VIP名单里了 📝<br/><br/>
         期待和你一起庆祝，<br/>
         一定要准时来哦～ 🎀
       </p>
@@ -1229,21 +1218,26 @@
   }
  
   // ===== PAGE NAVIGATION =====
-  function goToPage(pageNum) {
-    if (pageNum === currentPage) return;
-    
-    const currentEl = document.getElementById(`page${currentPage}`);
-    const nextEl = document.getElementById(`page${pageNum}`);
-    
-    currentEl.classList.remove('active');
-    nextEl.classList.add('active');
-    
-    // --- 新增：切换页面时让内容回到顶部 ---
-    nextEl.scrollTop = 0; 
-    
-    currentPage = pageNum;
+  function goToPage(num) {
+    if (num < 1 || num > 4) return;
+    const cur = document.getElementById('page' + currentPage);
+    const next = document.getElementById('page' + num);
+ 
+    if (num === 4) {
+      document.getElementById('nextBtn').classList.add('hidden');
+    }
+ 
+    cur.classList.remove('active');
+    cur.classList.add('exit-up');
+    setTimeout(() => cur.classList.remove('exit-up'), 700);
+ 
+    next.classList.add('active');
+    currentPage = num;
     updateNav();
-}
+ 
+    // Scroll to top on page change
+    next.scrollTop = 0;
+  }
  
   function nextPage() {
     if (currentPage < 4) goToPage(currentPage + 1);
